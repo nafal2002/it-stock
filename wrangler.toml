@@ -4,9 +4,6 @@ compatibility_date = "2024-04-30"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".output/public"
 
-[triggers]
-crons = []
-
 [vars]
 # SUPABASE_URL = ""
 # SUPABASE_PUBLISHABLE_KEY = ""
