@@ -10,13 +10,35 @@ Sistem menggunakan login terpusat dengan kredensial yang divalidasi.
 
 ## Arsitektur Sistem
 
-Aplikasi ini menggunakan pola **Single Page Application (SPA)** dengan rendering sisi klien.
+Aplikasi ini menggunakan pola **Single Page Application (SPA)** dengan rendering sisi klien, yang dioptimalkan untuk deployment di **Cloudflare Pages**.
 *   **Routing**: TanStack Router untuk navigasi yang type-safe.
-*   **Data Fetching**: TanStack Query untuk caching dan sinkronisasi status server dengan global error handling menggunakan `try-catch`.
-*   **Real-time**: Supabase Postgres Changes untuk pembaruan UI instan tanpa refresh.
-*   **Storage**: Supabase Storage untuk penyimpanan gambar produk dengan kompresi WebP di sisi klien.
+*   **Data Fetching**: TanStack Query untuk caching dan sinkronisasi status server.
+*   **Deployment**: Cloudflare Pages dengan Nitro adapter.
+*   **Real-time**: Supabase Postgres Changes untuk pembaruan UI instan.
+*   **Storage**: Supabase Storage untuk gambar produk.
+
+## Panduan Konfigurasi Cloudflare
+
+Untuk deployment yang sukses, parameter berikut harus dikonfigurasi pada Dashboard Cloudflare Pages:
+
+### 1. Build Settings
+- **Framework preset**: `None`
+- **Build command**: `npm run build`
+- **Build output directory**: `.output/public`
+
+### 2. Environment Variables
+Wajib dikonfigurasi di menu **Settings > Variables and Secrets**:
+- `VITE_SUPABASE_URL`: URL API Supabase (Client-side)
+- `VITE_SUPABASE_PUBLISHABLE_KEY`: Anon Key Supabase (Client-side)
+- `SUPABASE_URL`: URL API Supabase (Server-side)
+- `SUPABASE_SERVICE_ROLE_KEY`: Service Role Key (Server-side)
+
+### 3. Compatibility Flags
+Wajib diaktifkan di menu **Settings > Functions**:
+- `nodejs_compat`: Untuk mendukung dependensi berbasis Node.js di Edge Runtime.
 
 ## Struktur Database
+... (sisanya tetap sama)
 
 ### 1. Tabel `categories`
 Menyimpan kategori barang secara dinamis dengan dukungan soft delete.
