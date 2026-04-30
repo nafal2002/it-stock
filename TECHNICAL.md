@@ -23,7 +23,7 @@ Penting: Gunakan konfigurasi langsung via Dashboard Cloudflare Pages untuk mengh
 
 ### 1. Build Settings
 - **Framework preset**: `None`
-- **Build command**: `npm run build`
+- **Build command**: `NITRO_CLOUDFLARE_WRANGLER=false npm run build`
 - **Build output directory**: `.output/public`
 
 ### 2. Environment Variables
@@ -32,6 +32,7 @@ Wajib dikonfigurasi di menu **Settings > Variables and Secrets**:
 - `VITE_SUPABASE_PUBLISHABLE_KEY`: Anon Key Supabase (Client-side)
 - `SUPABASE_URL`: URL API Supabase (Server-side)
 - `SUPABASE_SERVICE_ROLE_KEY`: Service Role Key (Server-side)
+- `NITRO_CLOUDFLARE_WRANGLER`: `false` (Penting untuk bypass error Pages validation)
 
 ### 3. Compatibility Flags
 Wajib diaktifkan di menu **Settings > Functions**:
