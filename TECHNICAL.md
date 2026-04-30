@@ -13,13 +13,13 @@ Sistem menggunakan login terpusat dengan kredensial yang divalidasi.
 Aplikasi ini menggunakan pola **Single Page Application (SPA)** dengan rendering sisi klien, yang dioptimalkan untuk deployment di **Cloudflare Pages**.
 *   **Routing**: TanStack Router untuk navigasi yang type-safe.
 *   **Data Fetching**: TanStack Query untuk caching dan sinkronisasi status server.
-*   **Deployment**: Cloudflare Pages dengan Nitro adapter.
+*   **Deployment**: Cloudflare Pages (Dashboard-configured).
 *   **Real-time**: Supabase Postgres Changes untuk pembaruan UI instan.
 *   **Storage**: Supabase Storage untuk gambar produk.
 
 ## Panduan Konfigurasi Cloudflare
 
-Untuk deployment yang sukses, parameter berikut harus dikonfigurasi pada Dashboard Cloudflare Pages:
+Penting: Gunakan konfigurasi langsung via Dashboard Cloudflare Pages untuk menghindari konflik validasi file `wrangler.toml`.
 
 ### 1. Build Settings
 - **Framework preset**: `None`
